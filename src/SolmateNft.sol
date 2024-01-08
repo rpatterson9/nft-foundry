@@ -7,7 +7,6 @@ import "openzeppelin-contracts/contracts/security/PullPayment.sol";
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract SolmateNft is ERC721, PullPayment, Ownable {
-
     using Strings for uint256;
     string public baseURI;
     uint256 public currentTokenId;
@@ -33,13 +32,9 @@ contract SolmateNft is ERC721, PullPayment, Ownable {
         return newTokenId;
     }
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        virtual
-        override
-        returns (string memory)
-    {
+    function tokenURI(
+        uint256 tokenId
+    ) public view virtual override returns (string memory) {
         require(
             ownerOf[tokenId] != address(0),
             "ERC721Metadata: URI query for nonexistent token"
